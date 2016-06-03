@@ -32,7 +32,26 @@
     <script src="http://demo.dev.miracl.net/mpin/mpin.js"></script>
 </head>
 <body>
-
-  <a href="#" class="btn btn-primary" onClick="mpin.login({authURL: '<%=auth_url%>'})">Login</a>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Miracl NodeJS SDK example</h1>
+        </div>
+    </div>
+    <% if (is_authorized) {%>
+      <div class="col-md-4">
+        <b>E-mail: </b><%=email%><br/>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <a href="/refresh" class="btn btn-primary action">Refresh user data</a>
+        <a href="/logout" class="btn btn-primary action">Log out</a>
+      </div>
+    <% }else { %>
+        <div class="col-md-12">
+          <a href="#" class="btn btn-primary" onClick="mpin.login({authURL: '<%=auth_url%>'})">Login</a>
+        </div>
+    <% } %>
+  </div>
 </body>
 </html>
