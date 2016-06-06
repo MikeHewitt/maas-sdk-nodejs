@@ -65,5 +65,18 @@ app.get('/refresh', function(req, res) {
   }
 });
 
+app.get('/logout', function(req, res){
+  var session = req.session;
+  var miracl = new MiraclClient({ // TODO: initialize this before each req
+    clientID: "sflyuimq3wcxk",
+    clientSecret: "50cc-Gr-n71uftgJ3XwiJ0lXyq2Yqhbw2f4AAP_3Q6Q",
+    callbackURL: "http://127.0.0.1:5000/c2id"
+  }, done);
+  function done(err, config){
+    miracl.clearUserInfo(session, true);
+    res.redirect('/');
+  }
+});
+
 app.listen(5000);
 module.exports = app;
