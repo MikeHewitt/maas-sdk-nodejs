@@ -28,8 +28,8 @@
             margin-bottom: 15px;
         }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://demo.dev.miracl.net/mpin/mpin.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://demo.dev.miracl.net/mpin/mpad.js"></script> -->
 </head>
 <body>
   <div class="container">
@@ -38,6 +38,16 @@
             <h1>Miracl NodeJS SDK example</h1>
         </div>
     </div>
+
+    <!-- <div class="row">
+        <div class="col-md-12">
+          <% if(typeof messages !== 'undefined'){for(var message in messages){ %>
+            <div class="alert alert-<%= message.type %>">
+                <%= message.message %>
+            </div>
+          <% }} %>
+        </div>
+    </div> -->
     <% if (is_authorized) {%>
       <div class="col-md-4">
         <b>E-mail: </b><%=email%><br/>
@@ -49,9 +59,11 @@
       </div>
     <% }else { %>
         <div class="col-md-12">
-          <a href="#" class="btn btn-primary" onClick="mpin.login({authURL: '<%=auth_url%>'})">Login</a>
+          <div id="btmpin"></div>
+          <script src="https://demo.dev.miracl.net/mpin/mpad.js" x-authurl="<%=auth_url%>" x-element="btmpin"></script>
         </div>
     <% } %>
   </div>
+
 </body>
 </html>
