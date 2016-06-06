@@ -1,15 +1,23 @@
 var express = require('express');
 var session = require('express-session');
+var flash = require('connect-flash');
 var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index'); // TODO: to be changed after pushing to git repo
 var app = express();
 
 app.set('view engine', 'ejs');
-
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true
 }))
+
+app.use(flash());
+app.use(function(req, res, next){
+    res.locals.success = req.flash('success');
+    res.locals.danger = req.flash('danger');
+    next();
+});
+
 
 app.use(function(req, res, next) {
   req.miracl = new miraclClient({ // TODO: initialize this before each req
@@ -23,17 +31,26 @@ app.use(function(req, res, next) {
 app.get('/', function (req, res) {
   if(req.miracl.isAuthorized(req.session)){
     req.miracl.getEmail(req.session, function(err, email) {
-      res.render('index', { is_authorized: true, email: req.session.miraclUserinfo.sub });
+      req.miracl.getUserID(req.session, function(err, user_id) {
+        res.render('index', { is_authorized: true,
+                              user_id: user_id,
+                              email: email });
+      });
     });
   }
-  else res.render('index', { is_authorized: false,
-                        auth_url: req.miracl.getAuthorizationRequestUrl(req.session) });
+  else res.render('index', {is_authorized: false,
+                            auth_url: req.miracl.getAuthorizationRequestUrl(req.session) });
 });
 
 app.get('/c2id', function(req, res) {
   req.miracl.validateAuthorization(req.query, req.session, function (err, accessToken) {
-    if(err) res.send("There was an error");
-    else res.redirect('/');
+    if(err){
+      req.flash('danger','Login failed!');
+    }
+    else{
+      req.flash('success','Successfully logged in!');
+    }
+    res.redirect('/');
   });
 });
 
