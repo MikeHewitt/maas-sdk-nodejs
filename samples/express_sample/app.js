@@ -6,7 +6,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'random_string',
   resave: false,
   saveUninitialized: true
 }))
@@ -20,7 +20,7 @@ app.use(function(req, res, next){
 
 
 app.use(function(req, res, next) {
-  req.miracl = new miraclClient({ // TODO: initialize this before each req
+  req.miracl = new miraclClient({
     clientID: "sflyuimq3wcxk",
     clientSecret: "50cc-Gr-n71uftgJ3XwiJ0lXyq2Yqhbw2f4AAP_3Q6Q",
     callbackURL: "http://127.0.0.1:5000/c2id"
