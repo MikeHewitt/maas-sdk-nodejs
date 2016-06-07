@@ -32,7 +32,11 @@ app.get('/', function (req, res) {
   if(req.miracl.isAuthorized(req.session)){
     req.miracl.getEmail(req.session, function(err, email) {
       req.miracl.getUserID(req.session, function(err, user_id) {
-        res.render('index', { is_authorized: true,
+
+        if(err)
+          res.send(err.toString());
+        else
+          res.render('index', { is_authorized: true,
                               user_id: user_id,
                               email: email });
       });
@@ -45,6 +49,7 @@ app.get('/', function (req, res) {
 app.get('/c2id', function(req, res) {
   req.miracl.validateAuthorization(req.query, req.session, function (err, accessToken) {
     if(err){
+      console.log(err.toString());
       req.flash('danger','Login failed!');
     }
     else{
