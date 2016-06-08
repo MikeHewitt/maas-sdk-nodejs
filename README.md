@@ -70,7 +70,7 @@ Each call to `MiraclClient` can raise `MiraclError`. It contains `message` and s
 ## Samples
 
 Sample on Express can be found in the `samples` directory. Replace `CLIENT_ID`, `CLIENT_SECRET` and `REDIRECT_URI` with valid data from https://m-pin.my.id/protected
-Run `npm install` to install all dependencies.
+Do steps written in `Installation` and run `npm install` to install all dependencies.
 
 To start server,
 `cd samples/express_sample` && `node app.js`.
