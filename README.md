@@ -41,7 +41,7 @@ var miracl = new MiraclClient(
 
 To check if user session has token use `miracl.isAuthorized(session)`. You can request additional user data with `miracl.getEmail(session)` and `miracl.getUserID(session)`. Both methods cache results into `session`. If `nil`  is returned, token is expired and client needs to be authorized once more to access required data.
 
-Miracl API sets keys and values to session in JavaScript object manner. For example, `session.miraclState = "random_string"` If your session middleware does not support this approach, you have to synchronize app's session with JavaScript object passed to Miracl API functions. It has to be done before and after every Miracl API function call which require session passed as function argument. List of [compatible session stores] (https://github.com/expressjs/session#compatible-session-stores/).
+Miracl API sets keys and values to session in JavaScript object manner. For example, `session.miraclState = "random_string"` If your session middleware does not support this approach, you have to synchronize app's session with JavaScript object passed to Miracl API functions. It has to be done before and after every Miracl API function call which require session passed as function argument. List of [compatible session stores] (https://github.com/expressjs/session#compatible-session-stores).
 
 Use `miracl.clearUserInfo(session)` to drop cached user data (e-mail and user id).
 
