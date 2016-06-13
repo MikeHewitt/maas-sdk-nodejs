@@ -1,7 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var flash = require('connect-flash');
-var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index'); // TODO: to be changed after pushing to git repo
+var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index');
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -9,7 +9,7 @@ app.use(session({
   secret: 'random_string',
   resave: false,
   saveUninitialized: true
-}))
+}));
 
 app.use(flash());
 app.use(function(req, res, next){
@@ -18,32 +18,39 @@ app.use(function(req, res, next){
     next();
 });
 
-
 app.use(function(req, res, next) {
-  req.miracl = new miraclClient({
-    clientID: "vkwsstk2hb4jq",
+  req.miracl = new miraclClient(
+    { clientID: "vkwsstk2hb4jq",
     clientSecret: "x2b8yHAbJsT6uwgP1xw9Cjp9wVNxY6wjMES5o9OyXd0",
-    callbackURL: "http://127.0.0.1:5000/c2id"
-  }, next);
+    redirectURL: "http://127.0.0.1:5000/c2id" },
+    function(error, config) {
+      if(!error){
+        next();
+      } else {
+        res.send(error);
+      }
+    }
+  );
 });
 
-
 app.get('/', function (req, res) {
-  if(req.miracl.isAuthorized(req.session)){
-    req.miracl.getEmail(req.session, function(err, email) {
-      req.miracl.getUserID(req.session, function(err, user_id) {
-
-        if(err)
-          res.send(err.toString());
-        else
+  if(req.miracl.isAuthorized(req.session)) {
+    req.miracl.getEmail(req.session, function(error, email) {
+      req.miracl.getUserID(req.session, function(error, user_id) {
+        if(error) {
+          res.send(error);
+        } else {
           res.render('index', { is_authorized: true,
                               user_id: user_id,
-                              email: email });
+                              email: email }
+          );
+        }
       });
     });
-  }
-  else res.render('index', {is_authorized: false,
+  } else {
+    res.render('index', { is_authorized: false,
                             auth_url: req.miracl.getAuthorizationRequestUrl(req.session) });
+  }
 });
 
 app.get('/c2id', function(req, res) {
@@ -51,10 +58,10 @@ app.get('/c2id', function(req, res) {
     if(err){
       console.log(err.toString());
       req.flash('danger','Login failed!');
-    }
-    else{
+    } else {
       req.flash('success','Successfully logged in!');
     }
+
     res.redirect('/');
   });
 });
@@ -64,7 +71,7 @@ app.get('/refresh', function(req, res) {
   res.redirect('/');
 });
 
-app.get('/logout', function(req, res){
+app.get('/logout', function(req, res) {
   req.miracl.clearUserInfo(req.session, true);
   res.redirect('/');
 });
