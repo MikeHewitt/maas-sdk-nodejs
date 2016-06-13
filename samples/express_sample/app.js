@@ -21,8 +21,8 @@ app.use(function(req, res, next){
 
 app.use(function(req, res, next) {
   req.miracl = new miraclClient({
-    clientID: "sflyuimq3wcxk",
-    clientSecret: "50cc-Gr-n71uftgJ3XwiJ0lXyq2Yqhbw2f4AAP_3Q6Q",
+    clientID: "vkwsstk2hb4jq",
+    clientSecret: "x2b8yHAbJsT6uwgP1xw9Cjp9wVNxY6wjMES5o9OyXd0",
     callbackURL: "http://127.0.0.1:5000/c2id"
   }, next);
 });
