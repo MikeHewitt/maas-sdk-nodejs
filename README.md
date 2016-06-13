@@ -34,11 +34,11 @@ To start using Miracl API, `MiraclClient` should be initialized. It can be done 
 var miracl = new MiraclClient(
     {clientID: "CLIENT_ID",
     clientSecret: "CLIENT_SECRET",
-    callbackURL: "REDIRECT_URI",
+    redirectURL: "REDIRECT_URI",
     issuer: "ISSUER"},
     callback);
 ```
-`CLIENT_ID` and `CLIENT_SECRET` can be obtained from Miracl(unique per application). Normally it is not necessary to specify Miracl configuration endpoint to MiraclClient but it can be done by passing `issuer: "ISSUER"` along with `clientID`, `clientSecret` and `callbackURL` to `MiraclClient`. `REDIRECT_URI` is URI of your application end-point that will be responsible obtaining token. It should be the same as registered in Miracl system for this client ID.
+`CLIENT_ID` and `CLIENT_SECRET` can be obtained from Miracl(unique per application). Normally it is not necessary to specify Miracl configuration endpoint to MiraclClient but it can be done by passing `issuer: "ISSUER"` along with `clientID`, `clientSecret` and `redirectURL` to `MiraclClient`. `REDIRECT_URI` is URI of your application end-point that will be responsible obtaining token. It should be the same as registered in Miracl system for this client ID.
 
 To check if user session has token use `miracl.isAuthorized(session)`. You can request additional user data with `miracl.getEmail(session)` and `miracl.getUserID(session)`. Both methods cache results into `session`. If `nil`  is returned, token is expired and client needs to be authorized once more to access required data.
 
