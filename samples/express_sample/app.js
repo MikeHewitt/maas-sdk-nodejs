@@ -21,7 +21,6 @@ app.use(function(req, res, next){
 });
 
 app.use(function(req, res, next) {
-  console.log(configuration.clientID);
   req.miracl = new miraclClient(configuration, function(error, config) {
     if(!error){
       next();
