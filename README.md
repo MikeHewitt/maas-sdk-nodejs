@@ -60,7 +60,7 @@ right before closing `</body>` tag. And drop
 ```
 in the desired location of "Login with M-Pin" button.
 
-If user is not authorized, use `miracl.getAuthorizationRequestUrl(session)` to get authorization request URL and set client internal state. Returned URL should be passed to `data-authurl` attribute like `data-authurl="<%=auth_url%>`. After user interaction with Miracl system user will be sent to `redirect_uri` defined at initialization of `MiraclClient` object.
+If user is not authorized, use `miracl.getAuthorizationRequestUrl(session)` to get authorization request URL and set client internal state. Returned URL should be passed to `data-authurl` attribute like `data-authurl="<%=auth_url%>"`. After user interaction with Miracl system user will be sent to `redirect_uri` defined at initialization of `MiraclClient` object.
 
 To complete authorization pass params object received on `redirect_uri` to `miracl.validateAuthorization(params, callback)`. When access token and userinfo request will be done, passed `callback` function will be called using two arguments - error(`null` on successful request, instance of MiraclError otherwise) and accessToken if authorization succeeded. accessToken is preserved in `session` so there is no need to save token elsewhere.
 
