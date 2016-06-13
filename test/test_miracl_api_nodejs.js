@@ -11,7 +11,7 @@ describe("MiraclClient", function() {
   var credentials = {
     clientID: "MOCK_CLIENT",
     clientSecret: "MOCK_SECRET",
-    callbackURL: "http://empty"
+    redirectURL: "http://empty"
   };
 
   it("returns openid configuration", function(done) {

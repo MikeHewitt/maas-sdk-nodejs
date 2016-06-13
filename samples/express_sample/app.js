@@ -2,6 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var flash = require('connect-flash');
 var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index');
+var configuration = require('./config');
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -19,18 +20,13 @@ app.use(function(req, res, next){
 });
 
 app.use(function(req, res, next) {
-  req.miracl = new miraclClient(
-    { clientID: "vkwsstk2hb4jq",
-    clientSecret: "x2b8yHAbJsT6uwgP1xw9Cjp9wVNxY6wjMES5o9OyXd0",
-    redirectURL: "http://127.0.0.1:5000/c2id" },
-    function(error, config) {
-      if(!error){
-        next();
-      } else {
-        res.send(error);
-      }
+  req.miracl = new miraclClient(configuration, function(error, config) {
+    if(!error){
+      next();
+    } else {
+      res.send(error);
     }
-  );
+  });
 });
 
 app.get('/', function (req, res) {
