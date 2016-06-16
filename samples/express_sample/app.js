@@ -2,7 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var flash = require('connect-flash');
 var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index');
-var configuration = require('config.json')('./sample.json');
+var config = require('config-json');
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -21,6 +21,8 @@ app.use(function(req, res, next){
 });
 
 app.use(function(req, res, next) {
+  config.load('./sample.json');
+  var configuration = config.get();
   req.miracl = new miraclClient(configuration, function(error, config) {
     if(!error){
       next();
