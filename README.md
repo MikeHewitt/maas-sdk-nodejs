@@ -6,8 +6,8 @@
 
    `git clone https://github.com/miracl/maas-sdk-nodejs`
 
-2. Drop it under `node_modules` folder
-3. And run `npm install` from your project's root
+2. Drop it under `node_modules` directory of your project
+3. Run `npm install` from `maas-sdk-nodejs` directory
 
 
 ## Tests
@@ -71,7 +71,7 @@ Each call to `MiraclClient` can raise `MiraclError`. It contains `message` and s
 ## Samples
 
 Sample on Express can be found in the `samples` directory. Replace `CLIENT_ID`, `CLIENT_SECRET` located in `sample.json` with valid data.
-Do steps written in `Installation` and run `npm install` to install all dependencies.
+`cd samples/express_sample`, do steps written in `Installation` and run `npm install` from sample app's root directory to install all dependencies.
 
 To start server,
 `cd samples/express_sample` && `node app.js`.
