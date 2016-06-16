@@ -9,7 +9,6 @@
   "author": "Marcis Nimants",
   "license": "TBD",
   "dependencies": {
-    "config-json": "^1.0.0",
     "oauth_authorization": "^0.9.15",
     "passport": "^0.3.2"
   },
