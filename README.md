@@ -6,8 +6,9 @@
 
    `git clone https://github.com/miracl/maas-sdk-nodejs`
 
-2. Drop it under `node_modules` directory of your project
-3. Run `npm install` from `maas-sdk-nodejs` directory
+2. Place it under `node_modules` directory of your NodeJS project
+
+3. Run `npm install` from `node_modules/maas-sdk-nodejs` directory to install SDK dependencies
 
 
 ## Tests
@@ -22,7 +23,7 @@ And run `npm test` to run tests.
 
 All interaction with API happens through 'MiraclClient' instance.
 
-Drop `var MiraclClient = require('./node_modules/maas-sdk-nodejs/lib/index');` at the top of the file you are going to use `MiraclClient`
+Drop `var MiraclClient = require('maas-sdk-nodejs');` at the top of the file you are going to use `MiraclClient`
 
 Miracl API requires map-like object for storing state and additional data (it should be preserved between calls to api). In this document it is called `session`.
 
@@ -70,10 +71,18 @@ Each call to `MiraclClient` can raise `MiraclError`. It contains `message` and s
 
 ## Samples
 
-Sample on Express can be found in the `samples` directory. Replace `CLIENT_ID`, `CLIENT_SECRET` located in `sample.json` with valid data.
-`cd samples/express_sample`, do steps written in `Installation` and run `npm install` from sample app's root directory to install all dependencies.
+Sample on Express can be found in the `samples` directory. In order to start server, do steps written below:
 
-To start server,
-`cd samples/express_sample` && `node app.js`.
+1. Move `samples` folder outside of the `maas-sdk-nodejs` directory
 
-Open `http://127.0.0.1:5000/` in your browser to explore the sample.
+2. Run `npm install` from `samples` directory to install sample app's dependencies
+
+3. Run `npm install` from `maas-sdk-nodejs` directory to install SDK dependencies
+
+4. Place entire `maas-sdk-nodejs` folder under `samples/node_modules` so the path to SDK looks like `./samples/node_modules/maas-sdk-nodejs`
+
+5. Replace `CLIENT_ID`, `CLIENT_SECRET` located in `samples/sample.json` with valid data.
+
+6. Run `node app.js` from `samples` directory to start server
+
+7. Open `http://127.0.0.1:5000/` in your browser to explore the sample.
