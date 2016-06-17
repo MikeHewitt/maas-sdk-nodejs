@@ -13,9 +13,7 @@
 
 ## Tests
 
-To run tests change directory by `cd maas-sdk-nodejs`
-
-And run `npm test` to run tests.
+After you have finished the installation, run `npm test` from `maas-sdk-nodejs` directory to run tests.
 
 # Miracl API
 
@@ -77,7 +75,7 @@ Sample on Express can be found in the `samples` directory. In order to start ser
 
 2. Run `npm install` from `samples` directory to install sample app's dependencies
 
-3. Run `npm install` from `maas-sdk-nodejs` directory to install SDK dependencies
+3. Run `npm install` from `maas-sdk-nodejs` directory to install SDK dependencies. Tests can be run with `npm test` inside SDK folder once all dependencies are installed.
 
 4. Place entire `maas-sdk-nodejs` folder under `samples/node_modules` so the path to SDK looks like `./samples/node_modules/maas-sdk-nodejs`
 

@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var simple = require('simple-mock');
-var miraclClient = require("../lib/index.js");
-var miraclError = require("../lib/index.js");
+var miraclClient = require("maas-sdk-nodejs");
+var miraclError = require("maas-sdk-nodejs");
 
 describe("MiraclClient", function() {
   afterEach(function() {
