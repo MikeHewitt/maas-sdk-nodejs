@@ -1,7 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var flash = require('connect-flash');
-var miraclClient = require('./node_modules/maas-sdk-nodejs/lib/index');
+var miraclClient = require('maas-sdk-nodejs');
 var config = require('config-json');
 var app = express();
 

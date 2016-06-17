@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Miracl NodeJS SDK example</title>
+    <title>NodeJS SDK example</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -50,6 +50,7 @@
           <% } %>
         </div>
     </div>
+    <div class="row">
     <% if (is_authorized) {%>
       <div class="col-md-4">
         <b>E-mail: </b><%=email%><br/>
@@ -61,11 +62,13 @@
         <a href="/logout" class="btn btn-primary action">Log out</a>
       </div>
     <% }else { %>
+
         <div class="col-md-12">
           <div id="btmpin"></div>
           <script src="https://demo.dev.miracl.net/mpin/mpad.js" data-authurl="<%=auth_url%>" data-element="btmpin"></script>
         </div>
     <% } %>
+    </div>
   </div>
 
 </body>
