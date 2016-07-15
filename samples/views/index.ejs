@@ -36,40 +36,46 @@
             <h1>NodeJS SDK example</h1>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
           <% if(success && success.length > 0){ %>
             <div class="alert alert-success">
                 <%= success %>
             </div>
-          <% }else if(danger && danger.length){ %>
+          <% }else if(danger && danger.length > 0){ %>
             <div class="alert alert-danger">
                 <%= danger %>
             </div>
           <% } %>
         </div>
     </div>
-    <div class="row">
-    <% if (is_authorized) {%>
-      <div class="col-md-4">
-        <b>E-mail: </b><%=email%><br/>
-        <b>User ID: </b><%=user_id%><br/>
-      </div>
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <a href="/refresh" class="btn btn-primary action">Refresh user data</a>
-        <a href="/logout" class="btn btn-primary action">Log out</a>
-      </div>
-    <% }else { %>
 
+    <% if(danger && danger.length > 0) {%>
+      <div class="col-md-12">
+          <div id="btmpin"></div>
+      </div>
+    <%} else {%>
+      <div class="row">
+      <% if (is_authorized) {%>
+        <div class="col-md-4">
+          <b>E-mail: </b><%=email%><br/>
+          <b>User ID: </b><%=user_id%><br/>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <a href="/refresh" class="btn btn-primary action">Refresh user data</a>
+          <a href="/logout" class="btn btn-primary action">Log out</a>
+        </div>
+      <% }else { %>
         <div class="col-md-12">
           <div id="btmpin"></div>
-          <script src="https://demo.stg.miracl.net/mpin/mpad.js" data-authurl="<%=auth_url%>" data-element="btmpin"></script>
         </div>
+      <% } %>
+      </div>
     <% } %>
-    </div>
   </div>
-
+  <% if(typeof auth_url !== 'undefined') {%>
+      <script src="https://demo.stg.miracl.net/mpin/mpad.js" data-authurl="<%=auth_url%>" data-element="btmpin"></script>
+  <% } %>
 </body>
 </html>
