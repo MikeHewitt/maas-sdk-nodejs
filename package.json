@@ -1,0 +1,20 @@
+{
+  "name": "maas-sdk-nodejs",
+  "version": "0.1.0",
+  "description": "SDK for using Miracl authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Marcis Nimants",
+  "license": "TBD",
+  "dependencies": {
+    "oauth_authorization": "^0.9.15",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "simple-mock": "^0.7.0"
+  }
+}
