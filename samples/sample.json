@@ -1,5 +1,5 @@
 {
-  "clientID": "CLIENT_ID",
-  "clientSecret": "CLIENT_SECRET",
-  "redirectURL": "http://127.0.0.1:5000/c2id"
+  "client_id": "CLIENT_ID",
+  "secret": "SECRET",
+  "redirect_uri": "REDIRECT_URI"
 }
