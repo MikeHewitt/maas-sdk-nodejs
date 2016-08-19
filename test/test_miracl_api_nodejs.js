@@ -9,9 +9,9 @@ describe("MiraclClient", function() {
   });
 
   var credentials = {
-    clientID: "MOCK_CLIENT",
-    clientSecret: "MOCK_SECRET",
-    redirectURL: "http://empty"
+    client_id: "MOCK_CLIENT",
+    secret: "MOCK_SECRET",
+    redirect_uri: "http://empty"
   };
 
   it("returns openid configuration", function(done) {
@@ -184,5 +184,4 @@ describe("MiraclClient", function() {
       });
     });
   });
-
 });
