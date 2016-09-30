@@ -71,15 +71,17 @@ Use `miracl.clearUserInfo(session, true)` to clear user authorization status.
 
 ### Authorization flow
 
-Authorization flow depends on `mpad.js` browser library. To use it, drop following line
+The authorization flow depends on the `mpad.js` browser library. To use it, add the following line
 ```
-<script src="https://dd.cdn.mpin.io/mpad/mpad.js" data-authurl="<%=auth_url%>" data-element="btmpin"></script>
+<script src="<<Insert correct mpad url here>>" data-authurl="<%=auth_url%>" data-element="btmpin"></script>
 ```
-right before closing `</body>` tag. And drop
+right before the closing `</body>` tag. And drop
 ```
 <div id="btmpin"></div>
 ```
 in the desired location of "Login with M-Pin" button.
+
+Please refer to your distributor-specific documentation to find the correct url for the mpad.js script src
 
 If user is not authorized, use `miracl.getAuthorizationRequestUrl(session)` to get authorization request URL and set client internal state. Returned URL should be passed to `data-authurl` attribute like `data-authurl="<%=auth_url%>"`. After user interaction with Miracl system user will be sent to `redirect_uri` defined at initialization of `MiraclClient` object.
 
